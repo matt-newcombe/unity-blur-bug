@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492005790aa4d442e9f741e04e19554a, type: 3}
   m_Name: KawaseCamBlur
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     renderPassEvent: 500
     blurMaterial: {fileID: 2100000, guid: 66162d38f34574e43b087f448c2769f7, type: 2}
