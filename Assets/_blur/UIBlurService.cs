@@ -11,10 +11,12 @@ namespace Cauldron.Exodus.Service
     public class UIBlurService : MonoBehaviour
     {
         public RawImage RawImage;
+        public GraphicsFormat GraphicsFormat = GraphicsFormat.B10G11R11_UFloatPack32;
 
         [NonSerialized]
         public RenderTexture ScreenOverlayBlurTexture;
 
+        public Camera Camera;
         public void Start()
         {
             ScreenOverlayBlurTexture = new RenderTexture(Screen.width, Screen.height, 16, GraphicsFormat.B10G11R11_UFloatPack32);
@@ -23,9 +25,11 @@ namespace Cauldron.Exodus.Service
 
         public void DoBlur()
         {
-            KawaseCamBlur blurFeature = GetKawaseBlur(Camera.main);
+            ScreenOverlayBlurTexture = new RenderTexture(Screen.width, Screen.height, 16, GraphicsFormat.B10G11R11_UFloatPack32);
+            RawImage.texture = ScreenOverlayBlurTexture;
+            KawaseCamBlur blurFeature = GetKawaseBlur(Camera);
             blurFeature.settings.toRenderTexture = ScreenOverlayBlurTexture;
-            blurFeature.settings.DisableAfterRender = true;
+          //  blurFeature.settings.DisableAfterRender = true;
             blurFeature.SetActive(true);
             RawImage.texture = ScreenOverlayBlurTexture;
         }
